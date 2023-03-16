@@ -1,6 +1,11 @@
-"""This program generates a random password of a given length and type.
-It asks the user if wants to change the password
-and if wants to save it to a csv file.
+"""
+Generate random password of a given length and type.
+- You can generate a password with letters, numbers and special characters.
+- You can save passwords to csv file.
+- You can print saved passwords.
+
+It also works in a loop and asks the user if wants to generate new password
+or print passwords at the end.
 """
 
 import random
