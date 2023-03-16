@@ -97,9 +97,22 @@ def save_password(password, password_name):
             f"{datetime.datetime.now()} {password_name} {password}" + "\n")
 
 
+def print_passwords():
+    """Print the passwords from the file."""
+
+    # check if the file exists
+    try:
+        with open("passwords.csv", "r") as file:
+            for line in file:
+                print(line.strip())
+    except FileNotFoundError:
+        print("There is no file with passwords.")
+
+
 if __name__ == "__main__":
     password = generate_password()
     print(f"Random password: {password}")
+
     # Ask user if he wants to change the password
     change_password_answer = input("Do you want to change the password? [Y/N]")
     if change_password_answer.lower() == "y"\
@@ -112,3 +125,9 @@ if __name__ == "__main__":
             or save_password_answer.lower() == "yes":
         password_name = input("Enter the name of the password: ")
         save_password(password, password_name)
+
+    # Ask user if he wants to print the passwords
+    show_passwords_answer = input("Do you want to show passwords? [Y/N]")
+    if show_passwords_answer.lower() == "y"\
+            or show_passwords_answer.lower() == "yes":
+        print_passwords()
