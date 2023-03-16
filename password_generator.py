@@ -1,4 +1,7 @@
-"""This program generates a random password of a given length and type."""
+"""This program generates a random password of a given length and type.
+It asks the user if wants to change the password
+and if wants to save it to a csv file.
+"""
 
 import random
 import string
@@ -89,7 +92,7 @@ def save_password(password, password_name):
     if password_name == "":
         password_name = "no_name"
 
-    with open("passwords.txt", "a") as file:
+    with open("passwords.csv", "a") as file:
         file.write(
             f"{datetime.datetime.now()} {password_name} {password}" + "\n")
 
