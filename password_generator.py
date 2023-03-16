@@ -103,6 +103,8 @@ def print_passwords():
     # check if the file exists
     try:
         with open("passwords.csv", "r") as file:
+            print(
+                "------------------------------------------------------------------------------------")
             for line in file:
                 print(line.strip())
     except FileNotFoundError:
@@ -110,24 +112,33 @@ def print_passwords():
 
 
 if __name__ == "__main__":
-    password = generate_password()
-    print(f"Random password: {password}")
+    loop = True
+    while loop:
+        password = generate_password()
+        print("------------------------------------------------------------------------------------")
+        print(f"Random password: {password}")
+        print("------------------------------------------------------------------------------------")
 
-    # Ask user if he wants to change the password
-    change_password_answer = input("Do you want to change the password? [Y/N]")
-    if change_password_answer.lower() == "y"\
-            or change_password_answer.lower() == "yes":
-        password = change_password()
+        # Ask user if he wants to change the password
+        change_password_answer = input(
+            "Do you want to change the password? [Y/N]")
+        if change_password_answer.lower() == "y"\
+                or change_password_answer.lower() == "yes":
+            password = change_password()
 
-    # Ask user if he wants to save the password to a csv file
-    save_password_answer = input("Do you want to save the password? [Y/N]")
-    if save_password_answer.lower() == "y"\
-            or save_password_answer.lower() == "yes":
-        password_name = input("Enter the name of the password: ")
-        save_password(password, password_name)
+        # Ask user if he wants to save the password to a csv file
+        save_password_answer = input("Do you want to save the password? [Y/N]")
+        if save_password_answer.lower() == "y"\
+                or save_password_answer.lower() == "yes":
+            password_name = input("Enter the name of the password: ")
+            save_password(password, password_name)
 
-    # Ask user if he wants to print the passwords
-    show_passwords_answer = input("Do you want to show passwords? [Y/N]")
-    if show_passwords_answer.lower() == "y"\
-            or show_passwords_answer.lower() == "yes":
-        print_passwords()
+        # Ask user if wants to generate new password or print passwords
+        end_loop_answer = input("Do you want to create new [P]assword or\
+[S]how passwords? [P/S]. Press Enter to exit.")
+        if end_loop_answer.lower() == "s":
+            print_passwords()
+        elif end_loop_answer.lower() == "p":
+            continue
+        else:
+            loop = False
